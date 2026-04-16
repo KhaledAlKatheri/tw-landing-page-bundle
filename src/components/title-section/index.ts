@@ -1,8 +1,16 @@
 import { css, html, LitElement } from "lit";
 import { property } from "lit/decorators.js";
 
-interface AnimatedTitles {
+interface AnimatedTitlesType {
   animate_title: string;
+}
+
+type TextAlignmentValueType = "right" | "center";
+
+interface TextAlignmentType {
+  label: string;
+  value: TextAlignmentValueType;
+  key: string;
 }
 
 export default class TitleSection extends LitElement {
@@ -12,7 +20,8 @@ export default class TitleSection extends LitElement {
     sub_title: string;
     title: string;
     description: string;
-    animated_titles: AnimatedTitles[]
+    animete_titles: AnimatedTitlesType[]
+    text_alignment: TextAlignmentType;
   };
 
   private animationTimeout?: number;
@@ -62,6 +71,14 @@ export default class TitleSection extends LitElement {
   static styles = css`
     :host {
       display: block;
+    }
+
+    p {
+      margin: 0px;
+    }
+
+    span {
+      margin: 0px;
     }
 
     .animate-text {
@@ -121,6 +138,8 @@ export default class TitleSection extends LitElement {
     .title-section {
       display: flex;
       justify-content: center;
+      align-items: center;
+      width: 100%;
     }
 
     .title-section-content {
@@ -137,11 +156,21 @@ export default class TitleSection extends LitElement {
     }
 
     .title-section-sub-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
       font-size: 0.875rem;
       line-height: 1.25rem;
       font-weight: 700;
       line-height: 1.5;
       text-align: center
+    }
+
+    @media (min-width: 380px) and (max-width: 479px) {
+      .title-section-sub-title {
+          font-size: 0.75rem;
+          line-height: 1rem;
+      }
     }
 
     .title-section-title {
@@ -153,29 +182,86 @@ export default class TitleSection extends LitElement {
       text-align: center
     }
 
+    @media (min-width: 380px) and (max-width: 479px) {
+      .title-section-title {
+          font-size: 1.5rem;
+          line-height: 2rem;
+      }
+    }
+
     .title-section-description {
       font-size: 1rem;
       line-height: 1.5rem;
       font-weight: 400;
       line-height: 1.5;
       opacity: 0.65;
-      margin: 0px 0px;
+      margin: 0px;
+      max-width: 28rem;
       text-align: center
     }
+
+    @media (min-width: 380px) and (max-width: 479px) {
+      .title-section-description {
+          font-size: 0.875rem;
+          line-height: 1.25rem;
+      }
+    }
+
+    .ping-dot {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 0.5rem;
+      height: 0.5rem;
+    }
+
+    .ping-dot-wave {
+      position: absolute;
+      display: inline-flex;
+      width: 100%;
+      height: 100%;
+      border-radius: 9999px;
+      background-color: #38bdf8;
+      opacity: 0.75;
+      animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .ping-dot-core {
+      position: relative;
+      display: inline-flex;
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 9999px;
+      background-color: #0ea5e9;
+    }
+
+    @keyframes ping {
+      75%,
+      100% {
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+
   `;
 
   render() {
     return html`
     <div class="container">
+      ${this.config?.text_alignment.value}
       <div class="title-section">
         <div class="title-section-content">
-          <span class="title-section-sub-title">${this.config?.sub_title || 'Sub Title'}</span>
-              ${this.config?.animated_titles?.map((item: AnimatedTitles) => html`
-                <span class="">${item.animate_title}</span>
-              `)}
+          <span class="title-section-sub-title">
+            <span class="ping-dot">
+              <span class="ping-dot-wave"></span>
+              <span class="ping-dot-core"></span>
+            </span>
+            ${this.config?.sub_title || 'Sub Title'}
+          </span>
           ${this.config?.enable_animated_titles ? html`
             <p class="animate-text">
-              ${this.config?.animated_titles?.map((item: AnimatedTitles) => html`
+              ${this.config?.animete_titles?.map((item: AnimatedTitles) => html`
                 <span class="animate-title">${item.animate_title}</span>
               `)}
             </p>

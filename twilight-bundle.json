@@ -605,6 +605,35 @@
                     "value": false
                 },
                 {
+                    "id": "text_alignment",
+                    "icon": "sicon-folder",
+                    "type": "items",
+                    "source": "Manual",
+                    "label": "محاذاة النصوص",
+                    "format": "dropdown-list",
+                    "description": "تستخدم للتحكم في مكان النص, النصوص الإنجليزية ستحاذى لليسار تلقائياً في حالة اختيار محاذاة لليمين لضمان توافق مع لغة المتجر",
+                    "required": false,
+                    "options": [
+                        {
+                            "label": "محاذاة لليمين (Right)",
+                            "value": "right",
+                            "key": "right"
+                        },
+                        {
+                            "label": "محاذاة للوسط (Center)",
+                            "value": "center",
+                            "key": "center"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "وسط",
+                            "value": "center",
+                            "key": "center"
+                        }
+                    ]
+                },
+                {
                     "id": "sub_title",
                     "icon": "sicon-format-text-alt",
                     "type": "string",

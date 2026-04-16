@@ -605,6 +605,16 @@
                     "value": false
                 },
                 {
+                    "id": "enable_animated_gradient_title",
+                    "icon": "sicon-bell",
+                    "type": "boolean",
+                    "label": "تفعيل عنوان بلون متدرج متحرك",
+                    "format": "switch",
+                    "required": false,
+                    "description": "عند التفعيل، يتم تطبيق تأثير تدرج لوني متحرك على العنوان الرئيسي. والعناوين المتحركة",
+                    "value": false
+                },
+                {
                     "id": "text_alignment",
                     "icon": "sicon-folder",
                     "type": "items",
@@ -640,7 +650,8 @@
                     "label": "العنوان الفرعي (اختياري)",
                     "format": "text",
                     "required": false,
-                    "placeholder": "نص إضافي يظهر أعلى العنوان الرئيسي، ويمكن تركه فارغًا.",
+                    "description": "نص إضافي يظهر أعلى العنوان الرئيسي، ويمكن تركه فارغًا.",
+                    "placeholder": "أدخل العنوان الفرعي هنا...",
                     "value": "العنوان"
                 },
                 {
@@ -650,7 +661,7 @@
                     "label": "العنوان الرئيسي",
                     "format": "text",
                     "required": true,
-                    "placeholder": "العنوان الأساسي للمكوّن",
+                    "placeholder": "أدخل العنوان الرئيسي هنا...",
                     "value": "العنوان",
                     "conditions": [
                         {
@@ -667,7 +678,8 @@
                     "label": "الوصف (اختياري)",
                     "format": "textarea",
                     "required": false,
-                    "placeholder": "نص توضيحي مختصر يظهر أسفل العنوان، ويمكن تعطيله بتركه فارغًا.",
+                    "description": "نص توضيحي مختصر يظهر أسفل العنوان، ويمكن تعطيله بتركه فارغًا.",
+                    "placeholder": "أدخل الوصف هنا...",
                     "value": "هذا مكون قسم العنوان الجديد"
                 },
                 {
@@ -707,6 +719,106 @@
                             "placeholder": "العنوان",
                             "minLength": 1,
                             "maxLength": 100
+                        }
+                    ]
+                },
+                {
+                    "id": "subtitle_color",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "type": "string",
+                    "inputType": "color",
+                    "label": "لون العنوان الفرعي",
+                    "description": "تحديد لون العنوان الفرعي داخل المكوّن.",
+                    "required": true,
+                    "value": "#2377CD",
+                    "class": "mt-4"
+                },
+                {
+                    "id": "text_color",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "type": "string",
+                    "inputType": "color",
+                    "label": "لون النصوص",
+                    "description": "تحديد لون جميع النصوص داخل المكوّن, يشمل فقط العنوان الرئيسي، الوصف، والعناوين المتحركة.",
+                    "required": true,
+                    "value": "#2377CD",
+                    "class": "mt-4"
+                },
+                {
+                    "id": "gradient_color_one",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "type": "string",
+                    "inputType": "color",
+                    "label": "لون التدرج الأول",
+                    "description": "تحديد اللون الأول في التدرج اللوني.",
+                    "required": true,
+                    "value": "#2377CD",
+                    "class": "mt-4",
+                    "conditions": [
+                        {
+                            "id": "enable_animated_gradient_title",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "gradient_color_two",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "type": "string",
+                    "inputType": "color",
+                    "label": "لون التدرج الثاني",
+                    "description": "تحديد اللون الثاني في التدرج اللوني.",
+                    "required": true,
+                    "value": "#2377CD",
+                    "class": "mt-4",
+                    "conditions": [
+                        {
+                            "id": "enable_animated_gradient_title",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "gradient_color_three",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "type": "string",
+                    "inputType": "color",
+                    "label": "لون التدرج الثالث",
+                    "description": "تحديد اللون الثالث في التدرج اللوني.",
+                    "required": true,
+                    "value": "#2377CD",
+                    "class": "mt-4",
+                    "conditions": [
+                        {
+                            "id": "enable_animated_gradient_title",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "gradient_color_four",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "type": "string",
+                    "inputType": "color",
+                    "label": "لون التدرج الرابع",
+                    "description": "تحديد اللون الرابع في التدرج اللوني.",
+                    "required": true,
+                    "value": "#2377CD",
+                    "class": "mt-4",
+                    "conditions": [
+                        {
+                            "id": "enable_animated_gradient_title",
+                            "operation": "=",
+                            "value": true
                         }
                     ]
                 }

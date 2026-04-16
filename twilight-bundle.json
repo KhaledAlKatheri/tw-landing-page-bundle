@@ -611,7 +611,7 @@
                     "label": "تفعيل عنوان بلون متدرج متحرك",
                     "format": "switch",
                     "required": false,
-                    "description": "عند التفعيل، يتم تطبيق تأثير تدرج لوني متحرك على العنوان الرئيسي. والعناوين المتحركة",
+                    "description": "عند التفعيل، يتم تطبيق تأثير تدرج لوني متحرك على العنوان الرئيسي.",
                     "value": false
                 },
                 {
@@ -650,6 +650,7 @@
                     "label": "العنوان الفرعي (اختياري)",
                     "format": "text",
                     "required": false,
+                    "multilanguage": true,
                     "description": "نص إضافي يظهر أعلى العنوان الرئيسي، ويمكن تركه فارغًا.",
                     "placeholder": "أدخل العنوان الفرعي هنا...",
                     "value": "العنوان"
@@ -730,7 +731,7 @@
                     "inputType": "color",
                     "label": "لون العنوان الفرعي",
                     "description": "تحديد لون العنوان الفرعي داخل المكوّن.",
-                    "required": true,
+                    "required": false,
                     "value": "#2377CD",
                     "class": "mt-4"
                 },
@@ -742,7 +743,7 @@
                     "inputType": "color",
                     "label": "لون النصوص",
                     "description": "تحديد لون جميع النصوص داخل المكوّن, يشمل فقط العنوان الرئيسي، الوصف، والعناوين المتحركة.",
-                    "required": true,
+                    "required": false,
                     "value": "#2377CD",
                     "class": "mt-4"
                 },
@@ -754,7 +755,7 @@
                     "inputType": "color",
                     "label": "لون التدرج الأول",
                     "description": "تحديد اللون الأول في التدرج اللوني.",
-                    "required": true,
+                    "required": false,
                     "value": "#2377CD",
                     "class": "mt-4",
                     "conditions": [
@@ -773,7 +774,7 @@
                     "inputType": "color",
                     "label": "لون التدرج الثاني",
                     "description": "تحديد اللون الثاني في التدرج اللوني.",
-                    "required": true,
+                    "required": false,
                     "value": "#2377CD",
                     "class": "mt-4",
                     "conditions": [
@@ -792,7 +793,7 @@
                     "inputType": "color",
                     "label": "لون التدرج الثالث",
                     "description": "تحديد اللون الثالث في التدرج اللوني.",
-                    "required": true,
+                    "required": false,
                     "value": "#2377CD",
                     "class": "mt-4",
                     "conditions": [
@@ -811,7 +812,7 @@
                     "inputType": "color",
                     "label": "لون التدرج الرابع",
                     "description": "تحديد اللون الرابع في التدرج اللوني.",
-                    "required": true,
+                    "required": false,
                     "value": "#2377CD",
                     "class": "mt-4",
                     "conditions": [

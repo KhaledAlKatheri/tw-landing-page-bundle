@@ -180,7 +180,6 @@ export const titleSectionStyles = css`
       width: 100%;
       height: 100%;
       border-radius: 9999px;
-      background-color: #38bdf8;
       opacity: 0.75;
       animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
     }
@@ -191,7 +190,6 @@ export const titleSectionStyles = css`
       width: 0.5rem;
       height: 0.5rem;
       border-radius: 9999px;
-      background-color: #0ea5e9;
     }
 
     @keyframes ping {
@@ -200,6 +198,18 @@ export const titleSectionStyles = css`
         transform: scale(2);
         opacity: 0;
       }
+    }
+
+    @keyframes move-gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
     }
 
   `;

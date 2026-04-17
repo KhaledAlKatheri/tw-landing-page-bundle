@@ -5,12 +5,18 @@ type ProductCardLayoutValue = 'portrait' | 'landscape';
 
 interface ProductCardLayout {
   label: string;
-  value:  ProductCardLayoutValue;
+  value: ProductCardLayoutValue;
+  key: string;
+}
+
+interface productChoiseType {
+  label: string;
+  value: string;
   key: string;
 }
 
 interface ProductsItemType {
-  product: Product;
+  product: productChoiseType[];
   product_image: string;
   product_name_color: string;
   product_subtitle_color: string;
@@ -27,8 +33,11 @@ export default class FeaturedProducts extends LitElement {
   config?: {
     product_card_layout: ProductCardLayout[];
     product_card_border_radius: number;
-    products: ProductsItemType[]
+    products_collection: ProductsItemType[]
   };
+
+  @property({ type: Object })
+  productInfo?: Product;
 
   static styles = css`
     :host {
@@ -50,9 +59,33 @@ export default class FeaturedProducts extends LitElement {
     }
   `;
 
+  async connectedCallback() {
+    super.connectedCallback();
+    const productsCollection = this.config?.products_collection
+    console.log('product', productsCollection);
+
+    const productID = productsCollection?.product[0].value;
+    console.log('productID', productID);
+
+
+    if (!productID) {
+      console.error('Product card config is not valid, you must provide `config="{...}"!');
+      return;
+    }
+    await (window as any).Salla.onReady();
+    this.productInfo = await (window as any).Salla.product.api.getDetails(productID)
+      .then((res: { data: Product }) => res.data);
+
+    console.log('product', this.productInfo);
+
+  }
+
   render() {
+    if (!this.config) {
+      return html`<div>Loading...</div>`;
+    }
     console.log(this.config?.products);
-    
+
     return html`
       <div class="featured-products">
         ${this.config?.products?.map((product) => html`
@@ -66,11 +99,11 @@ export default class FeaturedProducts extends LitElement {
             <div>
               <span class="text-red-500">${(window as any).Salla.money(product.product.price)}</span>
               ${product.product.discount
-                ? html`<span class="discount">${(window as any).Salla.money(product.product.discount)}</span>`
-                : ""}
+        ? html`<span class="discount">${(window as any).Salla.money(product.product.discount)}</span>`
+        : ""}
             </div>
             <button class="add-to-cart">
-              ${ (window as any).Salla.lang.get('pages.cart.add_to_cart')}
+              ${(window as any).Salla.lang.get('pages.cart.add_to_cart')}
             </button>
           </div>
         `)}

@@ -1039,7 +1039,7 @@
                     "value": 24
                 },
                 {
-                    "id": "products",
+                    "id": "products_collection",
                     "type": "collection",
                     "format": "collection",
                     "required": true,

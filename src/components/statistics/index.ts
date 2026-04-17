@@ -11,13 +11,13 @@ export default class Statistics extends LitElement {
   @property({ type: Object })
   config?: {
     enable_animated_gradient_title: boolean;
-    text_color: string;
+    text_color?: string;
     stats_card_border_radius: number;
     stats: StatsType[];
-    gradient_color_one: string;
-    gradient_color_two: string;
-    gradient_color_three: string;
-    gradient_color_four: string;
+    gradient_color_one?: string;
+    gradient_color_two?: string;
+    gradient_color_three?: string;
+    gradient_color_four?: string;
   };
 
   static styles = css`
@@ -131,6 +131,7 @@ export default class Statistics extends LitElement {
 
     const gridColumns = { '--stats-count': this.config?.stats.length || 4 };
     const statsCardBorderRadius = { '--stats-card-border-radius': this.config?.stats_card_border_radius + 'px' || 24 + 'px' };
+
     return html`
       <div class="statistics" style="${styleMap(gridColumns)}">
         <div class="container">

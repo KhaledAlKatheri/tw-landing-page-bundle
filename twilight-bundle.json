@@ -853,7 +853,7 @@
                     "value": "#2377CD",
                     "class": "mt-4"
                 },
-                                {
+                {
                     "id": "gradient_color_one",
                     "icon": "sicon-color-palette",
                     "format": "color",

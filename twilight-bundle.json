@@ -1039,7 +1039,7 @@
                     "value": 24
                 },
                 {
-                    "id": "items",
+                    "id": "products",
                     "type": "collection",
                     "format": "collection",
                     "required": true,
@@ -1109,7 +1109,7 @@
                             "class": "mt-4"
                         },
                         {
-                            "id": "product_badge_text_color",
+                            "id": "product_badge_background_color",
                             "icon": "sicon-color-palette",
                             "format": "color",
                             "type": "string",

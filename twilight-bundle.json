@@ -823,6 +823,171 @@
                     ]
                 }
             ]
+        },
+        {
+            "title": "Statistics",
+            "icon": "sicon-layout-grid",
+            "name": "statistics",
+            "key": "a8a94bf4-a205-4012-968a-cf7fbec5c1ae",
+            "image": "https://cdn.salla.network/images/themes/default/placeholder.jpg",
+            "fields": [
+                {
+                    "id": "enable_animated_gradient_title",
+                    "icon": "sicon-bell",
+                    "type": "boolean",
+                    "label": "تفعيل عنوان بلون متدرج متحرك",
+                    "format": "switch",
+                    "required": false,
+                    "description": "عند التفعيل، يتم تطبيق تأثير تدرج لوني متحرك على العنوان الاحصائية فقط.",
+                    "value": false
+                },
+                {
+                    "id": "text_color",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "type": "string",
+                    "inputType": "color",
+                    "label": "لون النصوص",
+                    "description": "تحديد لون جميع النصوص داخل مكوّن الإحصائيات.",
+                    "required": false,
+                    "value": "#2377CD",
+                    "class": "mt-4"
+                },
+                {
+                    "id": "gradient_color_one",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "type": "string",
+                    "inputType": "color",
+                    "label": "لون التدرج الأول",
+                    "description": "تحديد اللون الأول في التدرج اللوني.",
+                    "required": false,
+                    "value": "#2377CD",
+                    "class": "mt-4",
+                    "conditions": [
+                        {
+                            "id": "enable_animated_gradient_title",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "gradient_color_two",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "type": "string",
+                    "inputType": "color",
+                    "label": "لون التدرج الثاني",
+                    "description": "تحديد اللون الثاني في التدرج اللوني.",
+                    "required": false,
+                    "value": "#2377CD",
+                    "class": "mt-4",
+                    "conditions": [
+                        {
+                            "id": "enable_animated_gradient_title",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "gradient_color_three",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "type": "string",
+                    "inputType": "color",
+                    "label": "لون التدرج الثالث",
+                    "description": "تحديد اللون الثالث في التدرج اللوني.",
+                    "required": false,
+                    "value": "#2377CD",
+                    "class": "mt-4",
+                    "conditions": [
+                        {
+                            "id": "enable_animated_gradient_title",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "gradient_color_four",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "type": "string",
+                    "inputType": "color",
+                    "label": "لون التدرج الرابع",
+                    "description": "تحديد اللون الرابع في التدرج اللوني.",
+                    "required": false,
+                    "value": "#2377CD",
+                    "class": "mt-4",
+                    "conditions": [
+                        {
+                            "id": "enable_animated_gradient_title",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "stats_card_border_radius",
+                    "type": "number",
+                    "label": "حواف دائرية لبطاقات الإحصائيات",
+                    "description": "تحديد درجة استدارة زوايا بطاقات الإحصائيات.",
+                    "format": "slider",
+                    "inputType": "range",
+                    "required": false,
+                    "minimum": 1,
+                    "maximum": 32,
+                    "step": 1,
+                    "value": 24
+                },
+                {
+                    "id": "stats",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 100,
+                    "item_label": "الإحصائيات",
+                    "value": [
+                        {
+                            "stat_title": "+10,000"
+                        },
+                        {
+                            "stat_title": "+8,500"
+                        },
+                        {
+                            "stat_title": "+500"
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "id": "stat_title",
+                            "label": "عنوان الإحصائية",
+                            "description": "النص الرئيسي الذي يعرض قيمة أو اسم الإحصائية.",
+                            "required": true,
+                            "format": "text",
+                            "placeholder": "العنوان",
+                            "minLength": 1,
+                            "maxLength": 100
+                        },
+                        {
+                            "id": "stat_description",
+                            "icon": "sicon-paragraph",
+                            "type": "string",
+                            "label": "وصف الإحصائية",
+                            "description": "نص توضيحي مختصر يظهر أسفل عنوان الإحصائية.",
+                            "format": "textarea",
+                            "required": true,
+                            "placeholder": "الوصف",
+                            "value": "This is a new Statistics component"
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }

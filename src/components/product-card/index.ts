@@ -152,7 +152,7 @@ export default class ProductCard extends LitElement {
           <span class="text-red-500">${(window as any).Salla.money(this.product.price)}</span>
           ${this.product.discount
             ? html`<span class="discount">${(window as any).Salla.money(this.product.discount)}</span>`
-            : ""}guguguggygy
+            : ""}
         </div>
         <button class="add-to-cart" @click="${this.handleAddToCart}">
           ${ (window as any).Salla.lang.get('pages.cart.add_to_cart')}

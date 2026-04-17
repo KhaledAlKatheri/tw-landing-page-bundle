@@ -650,7 +650,6 @@
                     "label": "العنوان الفرعي (اختياري)",
                     "format": "text",
                     "required": false,
-                    "multilanguage": true,
                     "description": "نص إضافي يظهر أعلى العنوان الرئيسي، ويمكن تركه فارغًا.",
                     "placeholder": "أدخل العنوان الفرعي هنا...",
                     "value": "العنوان"

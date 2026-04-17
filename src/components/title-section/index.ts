@@ -77,6 +77,9 @@ export default class TitleSection extends LitElement {
   static styles = [titleSectionStyles];
 
   render() {
+    if (!this.config) {
+      return html`<div style="color: red;">Configuration is required</div>`;
+    }
     const textAlign = this.config?.text_alignment[0]?.value
     const textAlignClass = {
       'text-right': textAlign === 'right' && this.isRtl,

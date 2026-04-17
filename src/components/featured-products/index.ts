@@ -1,5 +1,5 @@
 import { css, html, LitElement } from "lit";
-import { property } from "lit/decorators.js";
+import { property, state } from "lit/decorators.js";
 import { Product } from "./types";
 type ProductCardLayoutValue = 'portrait' | 'landscape';
 
@@ -18,14 +18,6 @@ interface productChoiseType {
 interface ProductsItemType {
   product: productChoiseType[];
   product_image: string;
-  product_name_color: string;
-  product_subtitle_color: string;
-  product_badge_text_color: string;
-  product_badge_background_color: string;
-  product_price_color: string;
-  product_discount_price_color: string;
-  add_to_cart_button_text_color: string;
-  add_to_cart_button_background_color: string;
 }
 
 export default class FeaturedProducts extends LitElement {
@@ -33,11 +25,18 @@ export default class FeaturedProducts extends LitElement {
   config?: {
     product_card_layout: ProductCardLayout[];
     product_card_border_radius: number;
-    products_collection: ProductsItemType[]
+    products_collection: ProductsItemType[];
+    product_name_color: string;
+    product_subtitle_color: string;
+    product_badge_text_color: string;
+    product_badge_background_color: string;
+    product_price_color: string;
+    product_discount_price_color: string;
+    add_to_cart_button_text_color: string;
+    add_to_cart_button_background_color: string;
   };
 
-  @property({ type: Object })
-  productInfo?: Product;
+  @property({ type: Array }) productInfo?: Product[];
 
   static styles = css`
     :host {
@@ -61,52 +60,54 @@ export default class FeaturedProducts extends LitElement {
 
   async connectedCallback() {
     super.connectedCallback();
-    const productsCollection = this.config?.products_collection
-    console.log('product', productsCollection);
+    
+    const productsCollection = this.config?.products_collection;
+    
+    const productIDs = productsCollection
+      ?.map((item) => (Array.isArray(item.product) ? item.product[0]?.value : item.product))
+      .filter(id => !!id); 
 
-    const productID = productsCollection?.product[0].value;
-    console.log('productID', productID);
-
-
-    if (!productID) {
-      console.error('Product card config is not valid, you must provide `config="{...}"!');
+    if (!productIDs || productIDs.length === 0) {
+      console.warn('No product IDs found in configuration.');
       return;
     }
+
+    const queryParams = {
+      source: 'selected',
+      source_value: productIDs
+    };
+
     await (window as any).Salla.onReady();
-    this.productInfo = await (window as any).Salla.product.api.getDetails(productID)
-      .then((res: { data: Product }) => res.data);
 
-    console.log('product', this.productInfo);
+    try {
+      const response = await (window as any).Salla.product.fetch(queryParams);
+      
+      this.productInfo = Array.isArray(response.data) ? response.data : [response.data];
 
+      console.log('تم تخزين جميع المنتجات في productInfo:', this.productInfo);
+      
+      this.requestUpdate();
+    } catch (error) {
+      console.error('فشل جلب المنتجات:', error);
+    }
   }
 
   render() {
     if (!this.config) {
       return html`<div>Loading...</div>`;
     }
-    console.log(this.config?.products);
+
+    if(!this.productInfo) {
+      return html`<div>Loading...</div>`;
+    }
 
     return html`
       <div class="featured-products">
-        ${this.config?.products?.map((product) => html`
-          <div class="product-card">
-            <img
-              class="product-image"
-              src="${product.product.image?.url || "image product"}"
-              alt="${product.product.image?.alt || "alt product"}"
-            />
-            <h3 class="text-red-500">${product.product.name}</h3>
-            <div>
-              <span class="text-red-500">${(window as any).Salla.money(product.product.price)}</span>
-              ${product.product.discount
-        ? html`<span class="discount">${(window as any).Salla.money(product.product.discount)}</span>`
-        : ""}
-            </div>
-            <button class="add-to-cart">
-              ${(window as any).Salla.lang.get('pages.cart.add_to_cart')}
-            </button>
-          </div>
-        `)}
+        ${this.config.products_collection.map((item) => {
+          return html`
+            <div></div>
+          `;
+        })}
       </div>
     `;
   }

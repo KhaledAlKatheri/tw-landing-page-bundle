@@ -48,8 +48,19 @@ export default class FeaturedProducts extends LitElement {
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
     }
+    @media (min-width: 1345px) {
+      .container {
+          max-width: 1345px;
+      }
+    }
 
-
+    .container {
+      width: 100%;
+      margin-right: auto;
+      margin-left: auto;
+      padding-right: 10px;
+      padding-left: 10px;
+    }
   `;
 
   async connectedCallback() {
@@ -86,6 +97,14 @@ export default class FeaturedProducts extends LitElement {
     }
   }
 
+  private async handleAddToCart(id: number) {
+    const getProductName = this.productInfo?.find((product: Product) => product.id === id)?.name;
+    (window as any).Salla.log("Adding to cart:", {product: this.productInfo});
+
+    // Show a simple notification
+    (window as any).Salla.success(`Added ${getProductName} to cart!`);
+  }
+
   render() {
     if (!this.config) {
       return html`<div>Loading...</div>`;
@@ -112,7 +131,9 @@ export default class FeaturedProducts extends LitElement {
                   <img src="${productImageCustom || product.image?.url}" alt="${productImageCustom ? product?.name : product.image?.alt}" />
                   <h3 class="product-name">${product?.name}</h3>
                   <p class="product-price">${(window as any).Salla.money(product?.price)}</p>
-                  <button class="add-to-cart">Add to Cart</button>
+                  <button class="add-to-cart" @click="${() => this.handleAddToCart(product?.id)}">
+                    ${ (window as any).Salla.lang.get('pages.cart.add_to_cart')}
+                  </button>
                 </div>
               `
             })}

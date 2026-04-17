@@ -1165,8 +1165,7 @@
                             "format": "image",
                             "label": "صورة المنتج",
                             "description": "الصورة التي سيتم عرضها داخل بطاقة المنتج. في حال عدم إضافتها سيتم استخدام صورة المنتج الافتراضية.",
-                            "required": false,
-                            "value": "https://cdn.salla.sa/form-builder/EMl1Ae8o35qzaG0HvVqz0IpeqcK9uyHliKksscja.jpg"
+                            "required": false
                         }
                     ]
                 }

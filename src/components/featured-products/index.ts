@@ -42,20 +42,14 @@ export default class FeaturedProducts extends LitElement {
     :host {
       display: block;
     }
-    .featured-products {
-      padding: 1rem;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    .featured-products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
     }
-    .featured-products-title {
-      font-weight: 500;
-      color: #2c3e50;
-      margin: 0 0 1rem;
-    }
-    .featured-products-content {
-      color: #666;
-    }
+
+
   `;
 
   async connectedCallback() {
@@ -103,11 +97,27 @@ export default class FeaturedProducts extends LitElement {
 
     return html`
       <div class="featured-products">
-        ${this.config.products_collection.map((item) => {
-          return html`
-            <div></div>
-          `;
-        })}
+        <div class="container">
+          <div class="featured-products-grid">
+            ${this.productInfo.map((product: Product) => {
+              const customSetting = this.config?.products_collection?.find(item => {
+                const settingId = Array.isArray(item.product) ? item.product[0]?.value : item.product;
+                return Number(settingId) === product.id;
+              });
+
+              const productImageCustom = customSetting?.product_image;
+
+              return html`
+                <div class="product-card">
+                  <img src="${productImageCustom || product.image?.url}" alt="${productImageCustom ? product?.name : product.image?.alt}" />
+                  <h3 class="product-name">${product?.name}</h3>
+                  <p class="product-price">${(window as any).Salla.money(product?.price)}</p>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+              `
+            })}
+          </div>
+        </div>
       </div>
     `;
   }

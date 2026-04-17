@@ -849,7 +849,7 @@
                     "inputType": "color",
                     "label": "لون النصوص",
                     "description": "تحديد لون جميع النصوص داخل مكوّن الإحصائيات.",
-                    "required": true,
+                    "required": false,
                     "value": "#2377CD",
                     "class": "mt-4"
                 },
@@ -981,7 +981,7 @@
                             "label": "وصف الإحصائية",
                             "description": "نص توضيحي مختصر يظهر أسفل عنوان الإحصائية.",
                             "format": "textarea",
-                            "required": false,
+                            "required": true,
                             "placeholder": "الوصف",
                             "value": "This is a new Statistics component"
                         }

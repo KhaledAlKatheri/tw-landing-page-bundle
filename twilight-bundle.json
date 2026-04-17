@@ -988,6 +988,189 @@
                     ]
                 }
             ]
+        },
+        {
+            "title": "Featured Products",
+            "icon": "sicon-layout-grid",
+            "name": "featured-products",
+            "key": "6d96fd2e-0e8e-46b8-b6ef-0ca75f2570f5",
+            "image": "https://cdn.salla.network/images/themes/default/placeholder.jpg",
+            "fields": [
+                {
+                    "id": "product_card_layout",
+                    "icon": "sicon-folder",
+                    "type": "items",
+                    "source": "Manual",
+                    "label": "اختيار وضع البطاقة",
+                    "format": "dropdown-list",
+                    "description": "تحديد شكل عرض بطاقة المنتج بناءً على أبعاد صورة المنتج. ملاحظة: اختر الوضع المناسب حسب شكل الصورة (إذا كانت الصورة طولية اختر بطاقة بالطول، وإذا كانت عرضية اختر بطاقة بالعرض).",
+                    "required": false,
+                    "options": [
+                        {
+                            "label": "بطاقة بالطول, عرض بطاقة المنتج بشكل عمودي (مناسب للصور الطولية).",
+                            "value": "portrait",
+                            "key": "portrait"
+                        },
+                        {
+                            "label": "بطاقة بالعرض, عرض بطاقة المنتج بشكل أفقي (مناسب للصور العرضية).",
+                            "value": "landscape",
+                            "key": "landscape"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "بطاقة بالعرض, عرض بطاقة المنتج بشكل أفقي (مناسب للصور العرضية).",
+                            "value": "landscape",
+                            "key": "landscape"
+                        }
+                    ]
+                },
+                {
+                    "id": "product_card_border_radius",
+                    "type": "number",
+                    "label": "حواف دائرية لبطاقة المنتج",
+                    "description": "تحديد درجة استدارة زوايا بطاقة المنتج.",
+                    "format": "slider",
+                    "inputType": "range",
+                    "required": false,
+                    "minimum": 1,
+                    "maximum": 32,
+                    "step": 1,
+                    "value": 24
+                },
+                {
+                    "id": "items",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 100,
+                    "item_label": "صفوف الجدول",
+                    "fields": [
+                        {
+                            "id": "product",
+                            "icon": "sicon-keyboard_arrow_down",
+                            "type": "items",
+                            "label": "اختر المنتج",
+                            "description": "اختر المنتج الذي تريد عرضه في البطاقة.",
+                            "placeholder": "البحث في قائمة المنتجات...",
+                            "format": "dropdown-list",
+                            "source": "products",
+                            "options": [],
+                            "required": true,
+                            "selected": [],
+                            "searchable": true,
+                            "multichoice": false
+                        },
+                        {
+                            "id": "product_image",
+                            "icon": "sicon-image-landscape",
+                            "type": "string",
+                            "format": "image",
+                            "label": "صورة المنتج",
+                            "description": "الصورة التي سيتم عرضها داخل بطاقة المنتج. في حال عدم إضافتها سيتم استخدام صورة المنتج الافتراضية.",
+                            "required": false,
+                            "value": "https://cdn.salla.sa/form-builder/EMl1Ae8o35qzaG0HvVqz0IpeqcK9uyHliKksscja.jpg"
+                        },
+                        {
+                            "id": "product_name_color",
+                            "icon": "sicon-color-palette",
+                            "format": "color",
+                            "type": "string",
+                            "inputType": "color",
+                            "label": "لون اسم المنتج",
+                            "description": "تحديد لون اسم المنتج داخل البطاقة.",
+                            "required": false,
+                            "value": "#2377CD",
+                            "class": "mt-4"
+                        },
+                        {
+                            "id": "product_subtitle_color",
+                            "icon": "sicon-color-palette",
+                            "format": "color",
+                            "type": "string",
+                            "inputType": "color",
+                            "label": "لون العنوان الفرعي",
+                            "description": "تحديد لون النص الثانوي (مثل التصنيف أو الوصف المختصر).",
+                            "required": false,
+                            "value": "#2377CD",
+                            "class": "mt-4"
+                        },
+                        {
+                            "id": "product_badge_text_color",
+                            "icon": "sicon-color-palette",
+                            "format": "color",
+                            "type": "string",
+                            "inputType": "color",
+                            "label": "لون العنوان الترويجي",
+                            "description": "تحديد لون النص الترويجي (مثل خصم أو عرض خاص).",
+                            "required": false,
+                            "value": "#2377CD",
+                            "class": "mt-4"
+                        },
+                        {
+                            "id": "product_badge_text_color",
+                            "icon": "sicon-color-palette",
+                            "format": "color",
+                            "type": "string",
+                            "inputType": "color",
+                            "label": "لون خلفية العنوان الترويجي",
+                            "description": "تحديد لون خلفية الشارة الترويجية.",
+                            "required": false,
+                            "value": "#2377CD",
+                            "class": "mt-4"
+                        },
+                        {
+                            "id": "product_price_color",
+                            "icon": "sicon-color-palette",
+                            "format": "color",
+                            "type": "string",
+                            "inputType": "color",
+                            "label": "لون السعر",
+                            "description": "تحديد لون السعر الأساسي للمنتج.",
+                            "required": false,
+                            "value": "#2377CD",
+                            "class": "mt-4"
+                        },
+                        {
+                            "id": "product_discount_price_color",
+                            "icon": "sicon-color-palette",
+                            "format": "color",
+                            "type": "string",
+                            "inputType": "color",
+                            "label": "لون السعر بعد الخصم",
+                            "description": "تحديد لون السعر بعد تطبيق الخصم.",
+                            "required": false,
+                            "value": "#2377CD",
+                            "class": "mt-4"
+                        },
+                        {
+                            "id": "add_to_cart_button_text_color",
+                            "icon": "sicon-color-palette",
+                            "format": "color",
+                            "type": "string",
+                            "inputType": "color",
+                            "label": "لون نص زر إضافة للسلة",
+                            "description": "تحديد لون النص داخل زر إضافة المنتج إلى السلة.",
+                            "required": false,
+                            "value": "#2377CD",
+                            "class": "mt-4"
+                        },
+                        {
+                            "id": "add_to_cart_button_background_color",
+                            "icon": "sicon-color-palette",
+                            "format": "color",
+                            "type": "string",
+                            "inputType": "color",
+                            "label": "لون خلفية زر إضافة للسلة",
+                            "description": "تحديد لون خلفية زر إضافة المنتج إلى السلة.",
+                            "required": false,
+                            "value": "#2377CD",
+                            "class": "mt-4"
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }

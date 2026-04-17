@@ -832,6 +832,16 @@
             "image": "https://cdn.salla.network/images/themes/default/placeholder.jpg",
             "fields": [
                 {
+                    "id": "enable_animated_gradient_title",
+                    "icon": "sicon-bell",
+                    "type": "boolean",
+                    "label": "تفعيل عنوان بلون متدرج متحرك",
+                    "format": "switch",
+                    "required": false,
+                    "description": "عند التفعيل، يتم تطبيق تأثير تدرج لوني متحرك على العنوان الاحصائية فقط.",
+                    "value": false
+                },
+                {
                     "id": "text_color",
                     "icon": "sicon-color-palette",
                     "format": "color",
@@ -842,6 +852,82 @@
                     "required": true,
                     "value": "#2377CD",
                     "class": "mt-4"
+                },
+                                {
+                    "id": "gradient_color_one",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "type": "string",
+                    "inputType": "color",
+                    "label": "لون التدرج الأول",
+                    "description": "تحديد اللون الأول في التدرج اللوني.",
+                    "required": false,
+                    "value": "#2377CD",
+                    "class": "mt-4",
+                    "conditions": [
+                        {
+                            "id": "enable_animated_gradient_title",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "gradient_color_two",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "type": "string",
+                    "inputType": "color",
+                    "label": "لون التدرج الثاني",
+                    "description": "تحديد اللون الثاني في التدرج اللوني.",
+                    "required": false,
+                    "value": "#2377CD",
+                    "class": "mt-4",
+                    "conditions": [
+                        {
+                            "id": "enable_animated_gradient_title",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "gradient_color_three",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "type": "string",
+                    "inputType": "color",
+                    "label": "لون التدرج الثالث",
+                    "description": "تحديد اللون الثالث في التدرج اللوني.",
+                    "required": false,
+                    "value": "#2377CD",
+                    "class": "mt-4",
+                    "conditions": [
+                        {
+                            "id": "enable_animated_gradient_title",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "gradient_color_four",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "type": "string",
+                    "inputType": "color",
+                    "label": "لون التدرج الرابع",
+                    "description": "تحديد اللون الرابع في التدرج اللوني.",
+                    "required": false,
+                    "value": "#2377CD",
+                    "class": "mt-4",
+                    "conditions": [
+                        {
+                            "id": "enable_animated_gradient_title",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
                 },
                 {
                     "id": "stats_card_border_radius",
